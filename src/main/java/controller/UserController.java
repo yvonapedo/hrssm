@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping(value = "/register") //: /user/register
     public String registerUser(String username, String firstname, String lastname, String dob, String telephone,
-                               String email, String address, String hiredate, int deptid,
+                               String email, String address, String hiredate, int deptid,String photourl,
                                String password, Model model) {
         TUser user = new TUser();
 
@@ -33,7 +33,7 @@ public class UserController {
         user.setUsername(username);
         user.setPassword(password);
         user.setUsertypeId(1);
-//        user.setPhotourl(photourl);
+        user.setPhotourl(photourl);
 
         boolean row;
         row = userService.registerUser(user);
