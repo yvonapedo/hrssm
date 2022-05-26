@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="model.TDepartment" >
+    <id column="deptId" property="deptId" jdbcType="INTEGER" />
+    <result column="deptName" property="deptName" jdbcType="VARCHAR" />
+    <result column="deptDescription" property="deptDescription" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    deptId, deptName, deptDescription
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_department
+    where deptId = #{deptId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelective" parameterType="model.TDepartment" resultType="model.TDepartment">
+    select
+    <include refid="Base_Column_List"/>
+    from t_department
+    <where>
+      <trim prefixOverrides="and">
+        <if test="deptId!=null and deptId!=0">
+          and deptId = #{deptId}
+        </if>
+        <if test="deptName!=null and deptName!=''">
+          and deptName like '%${deptName}%'
+        </if>
+        <if test="deptDescription!=null and deptDescription!=''">
+          and deptDescription like '%${deptDescription}%'
+        </if>
+      </trim>
+    </where>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_department
+    where deptId = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.TDepartment" >
+    insert into t_department (deptId, deptName, deptDescription
+      )
+    values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{deptDescription,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.TDepartment" >
+    insert into t_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        deptId,
+      </if>
+      <if test="deptName != null" >
+        deptName,
+      </if>
+      <if test="deptDescription != null" >
+        deptDescription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescription != null" >
+        #{deptDescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.TDepartment" >
+    update t_department
+    <set >
+      <if test="deptName != null" >
+        deptName = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescription != null" >
+        deptDescription = #{deptDescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where deptId = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.TDepartment" >
+    update t_department
+    set deptName = #{deptName,jdbcType=VARCHAR},
+      deptDescription = #{deptDescription,jdbcType=VARCHAR}
+    where deptId = #{deptId,jdbcType=INTEGER}
+  </update>
+</mapper>

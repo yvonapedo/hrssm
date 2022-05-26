@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TUsertypeMapper">
+  <resultMap id="BaseResultMap" type="model.TUsertype">
+    <result column="usertype_id" property="usertypeId" jdbcType="INTEGER"/>
+    <result column="usertype_desc" property="usertypeDesc" jdbcType="VARCHAR"/>
+    <result column="usertype" property="usertype" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    usertype_id,usertype_desc,usertype
+  </sql>
+
+  <insert id="insert" parameterType="model.TUsertype">
+    insert into t_usertype (usertype_id, usertype_desc, usertype)
+    values (#{usertypeId,jdbcType=INTEGER}, #{usertypeDesc,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="model.TUsertype">
+    insert into t_usertype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usertypeId != null">
+        usertype_id,
+      </if>
+      <if test="usertypeDesc != null">
+        usertype_desc,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usertypeId != null">
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="usertypeDesc != null">
+        #{usertypeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from t_usertype
+    where usertype_id = #{usertype_id,jdbcType=INTEGER}
+  </delete>
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.TUsertype">
+    update t_usertype
+    <set>
+      <if test=" usertype_desc!= null">
+        usertype_desc = #{usertype_desc,jdbcType=VARCHAR},
+      </if>
+      <if test=" usertype!= null">
+        usertype = #{usertype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from t_usertype
+    where usertype_id = #{usertype_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelective" parameterType="model.TUsertype" resultType="model.TUsertype">
+    select
+    <include refid="Base_Column_List"/>
+    from t_salary
+    <where>
+      <trim prefixOverrides="and">
+        <if test="usertype_id!=null and usertype_id!=0">
+          and usertype_id = #{usertype_id}
+        </if>
+        <if test="usertype!=null and usertype!=''">
+          and usertype like '%${usertype}%'
+        </if>
+        <if test="usertype_desc!=null and usertype_desc!=''">
+          and usertype_desc like '%${usertype_desc}%'
+        </if>
+      </trim>
+    </where>
+  </select>
+
+
+</mapper>

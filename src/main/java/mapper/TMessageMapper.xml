@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TMessageMapper" >
+  <resultMap id="BaseResultMap" type="model.TMessage" >
+    <id column="messageid" property="messageid" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="senderid" property="senderid" jdbcType="INTEGER" />
+    <result column="receiverid" property="receiverid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    messageid, subject, content, senderid, receiverid, createtime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_message
+    where messageid = #{messageid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelective" parameterType="model.TMessage" resultType="model.TMessage">
+    select
+    <include refid="Base_Column_List"/>
+    from t_message
+    <where>
+      <trim prefixOverrides="and">
+        <if test="messageid!=null and messageid!=0">
+          and messageid = #{messageid}
+        </if>
+        <if test="subject!=null and subject!=''">
+          and subject like '%${subject}%'
+        </if>
+        <if test="content!=null and content!=''">
+          and content like '%${content}%'
+        </if>
+        <if test="senderid!=null and  senderid!=0">
+          and senderid = #{senderid}
+        </if>
+        <if test="receiverid!=null and  receiverid!=0">
+          and receiverid = #{receiverid}
+        </if>
+        <if test="createtime!=null and createtime!=''">
+          and createtime like '%${createtime}%'
+        </if>
+        <if test="status!=null and  status!=''">
+          and status like '%${status}%'
+        </if>
+
+      </trim>
+    </where>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_message
+    where messageid = #{messageid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.TMessage" >
+    insert into t_message (messageid, subject, content, 
+      senderid, receiverid, createtime, 
+      status)
+    values (#{messageid,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{senderid,jdbcType=INTEGER}, #{receiverid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.TMessage" >
+    insert into t_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
+        messageid,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="senderid != null" >
+        senderid,
+      </if>
+      <if test="receiverid != null" >
+        receiverid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageid != null" >
+        #{messageid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="senderid != null" >
+        #{senderid,jdbcType=INTEGER},
+      </if>
+      <if test="receiverid != null" >
+        #{receiverid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.TMessage" >
+    update t_message
+    <set >
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="senderid != null" >
+        senderid = #{senderid,jdbcType=INTEGER},
+      </if>
+      <if test="receiverid != null" >
+        receiverid = #{receiverid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where messageid = #{messageid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.TMessage" >
+    update t_message
+    set subject = #{subject,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      senderid = #{senderid,jdbcType=INTEGER},
+      receiverid = #{receiverid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where messageid = #{messageid,jdbcType=INTEGER}
+  </update>
+</mapper>

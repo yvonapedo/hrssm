@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TUserMapper" >
+  <resultMap id="BaseResultMap" type="model.TUser" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="firstname" property="firstname" jdbcType="VARCHAR" />
+    <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+    <result column="dob" property="dob" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="hiredate" property="hiredate" jdbcType="VARCHAR" />
+    <result column="deptid" property="deptid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="usertype_id" property="usertypeId" jdbcType="INTEGER" />
+    <result column="photourl" property="photourl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userid, firstname, lastname, dob, telephone, email, address, hiredate, deptid, username, 
+    password, usertype_id, photourl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelective" parameterType="model.TUser" resultType="model.TUser">
+
+    select
+    <include refid="Base_Column_List"/>
+    from t_user
+    <where>
+      <trim prefixOverrides="and">
+        <if test="userid!=null and userid!=0">
+          and userid = #{userid}
+        </if>
+        <if test="firstname!=null and firstname!=''">
+          and firstname like '%${firstname}%'
+        </if>
+        <if test="lastname!=null and lastname!=''">
+          and lastname like '%${lastname}%'
+        </if>
+        <if test="dob!=null and dob!=''">
+          and dob like '%${dob}%'
+        </if>
+        <if test="telephone!=null and telephone!=''">
+          and telephone like '%${telephone}%'
+        </if>
+        <if test="email!=null and email!=''">
+          and email like '%${email}%'
+        </if>
+        <if test="address!=null and address!=''">
+          and address like '%${address}%'
+        </if>
+        <if test="hiredate!=null and hiredate!=''">
+          and hiredate like '%${hiredate}%'
+        </if>
+        <if test="deptid!=null and deptid!=''">
+          and deptid = #{deptid}
+        </if>
+        <if test="username!=null and username!=''">
+          and username like '%${username}%'
+        </if>
+        <if test="password!=null and password!=''">
+          and password = #{password}
+        </if>
+        <if test="usertypeId!=null and usertypeId!=''">
+          and usertype_id = #{usertype_id}
+        </if>
+
+        <if test="photourl!=null and photourl!=''">
+          and photourl like '%${photourl}%'
+        </if>
+
+      </trim>
+    </where>
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.TUser" >
+    insert into t_user (userid, firstname, lastname, 
+      dob, telephone, email, 
+      address, hiredate, deptid, 
+      username, password, usertype_id, 
+      photourl)
+    values (#{userid,jdbcType=INTEGER}, #{firstname,jdbcType=VARCHAR}, #{lastname,jdbcType=VARCHAR}, 
+      #{dob,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{hiredate,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{usertypeId,jdbcType=INTEGER}, 
+      #{photourl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.TUser" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="firstname != null" >
+        firstname,
+      </if>
+      <if test="lastname != null" >
+        lastname,
+      </if>
+      <if test="dob != null" >
+        dob,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="hiredate != null" >
+        hiredate,
+      </if>
+      <if test="deptid != null" >
+        deptid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="usertypeId != null" >
+        usertype_id,
+      </if>
+      <if test="photourl != null" >
+        photourl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="firstname != null" >
+        #{firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="lastname != null" >
+        #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null" >
+        #{dob,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hiredate != null" >
+        #{hiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null" >
+        #{deptid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="usertypeId != null" >
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="photourl != null" >
+        #{photourl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.TUser" >
+    update t_user
+    <set >
+      <if test="firstname != null" >
+        firstname = #{firstname,jdbcType=VARCHAR},
+      </if>
+      <if test="lastname != null" >
+        lastname = #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null" >
+        dob = #{dob,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="hiredate != null" >
+        hiredate = #{hiredate,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null" >
+        deptid = #{deptid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="usertypeId != null" >
+        usertype_id = #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="photourl != null" >
+        photourl = #{photourl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.TUser" >
+    update t_user
+    set firstname = #{firstname,jdbcType=VARCHAR},
+      lastname = #{lastname,jdbcType=VARCHAR},
+      dob = #{dob,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      hiredate = #{hiredate,jdbcType=VARCHAR},
+      deptid = #{deptid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      usertype_id = #{usertypeId,jdbcType=INTEGER},
+      photourl = #{photourl,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

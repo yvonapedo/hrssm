@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="impl"/>
+    <context:component-scan base-package="model"/>
+    <context:component-scan base-package="mapper"/>
+    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="mapperImpl"/>
+
+    <!--导入外部数据源-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置数据源 BasicDataSource-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${p6spy.drivername}"/>
+        <property name="url" value="${p6spy.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--指定局部mybatis配置文件的位置：SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+        <property name="configLocation" value="classpath:mybatis.xml"></property>
+    </bean>
+
+    <!--配置DAO接口类位置：MapperScannerConfigurer-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="mapper"></property>
+    </bean>
+
+</beans>

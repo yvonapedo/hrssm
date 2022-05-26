@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TSalaryMapper" >
+  <resultMap id="BaseResultMap" type="model.TSalary" >
+    <id column="salaryId" property="salaryId" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="issueDate" property="issueDate" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="employeeId" property="employeeId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    salaryId, amount, issueDate, remarks, employeeId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_salary
+    where salaryId = #{salaryId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelective" parameterType="model.TSalary" resultType="model.TSalary">
+    select
+    <include refid="Base_Column_List"/>
+    from t_salary
+    <where>
+      <trim prefixOverrides="and">
+        <if test="salaryId!=null and salaryId!=0">
+          and salaryId = #{salaryId}
+        </if>
+        <if test="amount!=null and amount!=0">
+          and amount = #{amount}
+        </if>
+        <if test="issueDate!=null and issueDate!=''">
+          and issueDate like '%${issueDate}%'
+        </if>
+        <if test="remarks!=null and remarks!=''">
+          and remarks like '%${remarks}%'
+        </if>
+        <if test="employeeId!=null and  employeeId!=0">
+          and employeeId = #{employeeId}
+        </if>
+
+      </trim>
+
+    </where>
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_salary
+    where salaryId = #{salaryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.TSalary" >
+    insert into t_salary (salaryId, amount, issueDate, 
+      remarks, employeeId)
+    values (#{salaryId,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{issueDate,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{employeeId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="model.TSalary" >
+    insert into t_salary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="salaryId != null" >
+        salaryId,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="issueDate != null" >
+        issueDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="employeeId != null" >
+        employeeId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="salaryId != null" >
+        #{salaryId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="issueDate != null" >
+        #{issueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.TSalary" >
+    update t_salary
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="issueDate != null" >
+        issueDate = #{issueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null" >
+        employeeId = #{employeeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where salaryId = #{salaryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.TSalary" >
+    update t_salary
+    set amount = #{amount,jdbcType=DECIMAL},
+      issueDate = #{issueDate,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      employeeId = #{employeeId,jdbcType=INTEGER}
+    where salaryId = #{salaryId,jdbcType=INTEGER}
+  </update>
+</mapper>
