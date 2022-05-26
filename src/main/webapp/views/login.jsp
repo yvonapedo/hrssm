@@ -39,7 +39,7 @@
     <meta charset="utf-8">
     <title>Register member</title>
 </head>
-<body style=" background-image:url(../res/img/bg.jpg1); ">
+<body style=" background-image:url(../res/img/bg1.jpg); ">
 <!-- begin to edit form -->
 <form action="../user/login" style="  display: flex;">
     <div style=" height: 100vh; background-color: #eeeeeeef; padding:30px 30px 0px 30px; width: 500px; border-right: #2d3b91 10px solid;
