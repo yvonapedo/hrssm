@@ -38,6 +38,8 @@
                                placeholder="please input title..." autocomplete="off"
                                class="layui-input" style="width: 300px"/>
                         <button type="submit" class="layui-btn layui-btn-normal">Search</button>
+                        <a class="layui-btn layui-btn-primary" href="../message/getmessages?status=sent"> Inbox</a>
+                        <a class="layui-btn layui-btn-primary" href="../message/getmessages?status=read"> Sent</a>
                     </div>
                 </div>
 

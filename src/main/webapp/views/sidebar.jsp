@@ -47,7 +47,7 @@
             <a href="javascript:;">Salaries</a>
             <dl class="layui-nav-child">
                 <dd><a href="../views/addsalary.jsp">Add Salary</a></dd>
-                <dd><a href="../salary/getsalaries">Employees Salary</a></dd>
+                <dd><a href="../salary/getAllsalaries">Employees Salary</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">

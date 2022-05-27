@@ -52,10 +52,10 @@ public class MessageController {
 
 
     @RequestMapping(value = "/getmessages") //
-    public String getMessages(Model model, HttpServletRequest req) {
+    public String getMessages(Model model, String status, HttpServletRequest req) {
 
         TMessage message = new TMessage();
-
+        message.setStatus(status);
         HttpSession session = req.getSession();
         TUser user = (TUser) session.getAttribute("loginuser");
         System.out.println(user.getUsername());

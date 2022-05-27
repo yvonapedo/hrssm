@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="layui-form-item">
+                        <div style="display: none" class="layui-form-item">
                             <label class="layui-form-label">senderid</label>
                             <div class="layui-input-block">
                                 <input type="text" name="senderid" value="${message.senderid}" required
@@ -66,7 +66,7 @@
 
 
 
-                        <div class="layui-form-item">
+                        <div style="display: none" class="layui-form-item">
                             <label class="layui-form-label">receiverid </label>
                             <div class="layui-input-block">
                                 <input type="text" name="receiverid" value="${message.receiverid}" required

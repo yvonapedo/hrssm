@@ -47,14 +47,17 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">Content</label>
                             <div class="layui-input-block">
-                                <input type="text" name="content" value="${message.content}" required
-                                       lay-verify="required"
-                                       autocomplete="off"
-                                       class="layui-input" style="width: 300px"/>
+                                <textarea name="content" value="${message.content}"
+                                          class="layui-input" style="width: 300px"></textarea>
+
+<%--                                <input type="text" name="content" value="${message.content}" required--%>
+<%--                                       lay-verify="required"--%>
+<%--                                       autocomplete="off"--%>
+<%--                                       class="layui-input" style="width: 300px"/>--%>
                             </div>
                         </div>
 
-                        <div class="layui-form-item">
+                        <div  class="layui-form-item">
                             <label class="layui-form-label">senderid</label>
                             <div class="layui-input-block">
                                 <input type="text" name="senderid" value="${message.senderid}" required
@@ -66,7 +69,7 @@
 
 
 
-                        <div class="layui-form-item">
+                        <div  class="layui-form-item">
                             <label class="layui-form-label">receiverid </label>
                             <div class="layui-input-block">
                                 <input type="text" name="receiverid" value="${message.receiverid}" required
@@ -78,7 +81,7 @@
                         <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button lay-filter="formDemo" type="submit" lay-submit
-                                        class="layui-btn layui-btn-normal">Save
+                                        class="layui-btn layui-btn-normal">Send
                                 </button>
                             </div>
                         </div>

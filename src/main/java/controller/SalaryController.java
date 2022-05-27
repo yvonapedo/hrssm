@@ -90,6 +90,17 @@ public class SalaryController {
         return "salaries";
     }
 
+    @RequestMapping(value = "/getAllsalaries") //
+    public String getAllsalaries(String search, Model model ) {
+        TSalary salary= new TSalary();
+
+        salary.setIssueDate(search);
+
+        List<TSalary> list = salaryService.getSalariesSelective(salary);
+        model.addAttribute("salaries", list);
+        return "salaries";
+    }
+
     @RequestMapping(value = "/mysalaries") //
     public String getSaleries(int userid, Model model,  HttpServletRequest req) {
         TSalary salary= new TSalary();
