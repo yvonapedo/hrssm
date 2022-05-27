@@ -82,8 +82,6 @@
 <form action="../user/register" style="  display: flex;">
     <div style=" height: 100vh; background-color: #eeeeeeef; padding:30px 30px 0px 30px; width: 800px; border-right: #2d3b91 10px solid;
                 display: flex;">
-
-
         <div>
             <section style=" overflow: hidden">
                 <div style="width:100%">

@@ -1,7 +1,6 @@
 package dao;
 
 import model.TUser;
-
 import java.util.List;
 
 public interface TUserMapper {
