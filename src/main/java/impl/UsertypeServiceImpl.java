@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class UsertypeServiceImpl implements UsertypeService {
-    
+
     @Autowired
     private TUsertypeMapperImpl tUsertypeMapper;
     @Override

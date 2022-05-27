@@ -2,12 +2,14 @@ package controller;
 
 import model.TDepartment;
 import model.TUser;
+import model.TUsertype;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.DepartmentService;
 import service.UserService;
+import service.UsertypeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private service.UsertypeService usertypeService;
     @Autowired
     private DepartmentService departmentService;
 
@@ -54,7 +58,7 @@ public class UserController {
 
     @RequestMapping(value = "/edituser") //: /user/
     public String edituser(String username, String firstname, String lastname, String dob, String telephone,
-                           String email, String address, String hiredate,   String photourl, HttpServletRequest req,
+                           String email, String address, String hiredate, String photourl, HttpServletRequest req,
                            Model model) {
         TUser user = new TUser();
 
@@ -69,9 +73,9 @@ public class UserController {
         user.setPhotourl(photourl);
 
         HttpSession session = req.getSession();
-        TUser loginuser= (TUser) session.getAttribute("loginuser");
+        TUser loginuser = (TUser) session.getAttribute("loginuser");
         System.out.println(loginuser.getUsername());
-        if (loginuser!= null) {
+        if (loginuser != null) {
             user.setUserid(loginuser.getUserid());
         }
         boolean row = userService.modifyUser(user);
@@ -85,22 +89,44 @@ public class UserController {
             return "errors";
         }
     }
+
+    @RequestMapping(value = "/changetype") //: /user/
+    public String changetype(int userid, String username, int usertypeId, Model model) {
+        TUser user = new TUser();
+
+        user.setUsertypeId(usertypeId);
+        if (userid != 0) {
+            user.setUserid(userid);
+        }
+        boolean row = userService.modifyUser(user);
+
+        if (row) {
+
+            return "redirect:../user/getusers";
+
+        } else {
+            model.addAttribute("errMsg", "unsuccessful correct");
+            model.addAttribute("backUrl", "../views/login.jsp");
+            return "errors";
+        }
+    }
+
     @RequestMapping(value = "/changepwd") //: /user/pwd
-    public String changepwd(String username,  String password,   String password1, String password2, HttpServletRequest req,
-                           Model model) {
+    public String changepwd(String username, String password, String password1, String password2, HttpServletRequest req,
+                            Model model) {
         TUser user = new TUser();
 
         HttpSession session = req.getSession();
-        TUser loginuser= (TUser) session.getAttribute("loginuser");
+        TUser loginuser = (TUser) session.getAttribute("loginuser");
         System.out.println(loginuser.getUsername());
-        if (password.equals(loginuser.getPassword())){
+        if (password.equals(loginuser.getPassword())) {
             user.setUsername(username);
         } else {
             model.addAttribute("errMsg", "Old Password incorrect");
             model.addAttribute("backUrl", "../views/changepwd.jsp");
             return "errors";
         }
-        if (password1.equals(password2)){
+        if (password1.equals(password2)) {
             user.setPassword(password1);
         } else {
             model.addAttribute("errMsg", "New Passwords don't match incorrect");
@@ -108,7 +134,7 @@ public class UserController {
             return "errors";
         }
 
-        if (loginuser!= null) {
+        if (loginuser != null) {
             user.setUserid(loginuser.getUserid());
         }
         boolean row = userService.modifyUser(user);
@@ -158,7 +184,7 @@ public class UserController {
 
     @RequestMapping(value = "/getusers") //
     public String getEmployees(String search, Model model) {
-        TUser user= new TUser();
+        TUser user = new TUser();
         user.setFirstname(search);
         user.setLastname(search);
         user.setTelephone(search);
@@ -168,5 +194,16 @@ public class UserController {
         List<TUser> list = userService.getUsersSelectiveOr(user);
         model.addAttribute("users", list);
         return "users";
+    }
+
+    @RequestMapping(value = "/getuser") //
+    public String getUser(int userid, Model model, Model usertypeModel) {
+
+        List<TUsertype> usertypes = usertypeService.getUsertypeSelective(null);
+
+        TUser user = userService.getTUserByid(userid);
+        usertypeModel.addAttribute("usertypes", usertypes);
+        model.addAttribute("user", user);
+        return "changeusertype";
     }
 }

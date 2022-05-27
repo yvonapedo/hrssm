@@ -59,10 +59,10 @@
                         <td><p class="s3">${obj.email}</p></td>
                         <td><p class="s3">${obj.address}</p></td>
                         <td><p class="s3">${obj.hiredate}</p></td>
-                        <td>
+                        <td> <a class="layui-btn" href="../user/getuser?userid=${obj.userid}">edit</a> 
 <%--                            <c:if test="${loginuser.userid==obj.employeeId}">--%>
 <%--                                <p>--%>
-<%--                                    <a class="layui-btn" href="../user/getuser?userId=${obj.userId}">edit</a>--%>
+<%--                                    <a class="layui-btn" href="../user/getuser?userid=${obj.userid}">edit</a>--%>
 <%--                                    <a class="layui-btn layui-btn-primary" href="#">remove</a>--%>
 <%--                                </p>--%>
 <%--                            </c:if>--%>

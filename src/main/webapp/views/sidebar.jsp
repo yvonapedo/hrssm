@@ -30,8 +30,8 @@
             <a href="javascript:;">Projects</a>
             <dl class="layui-nav-child">
                 <dd><a href="../views/addproject.jsp">New Project</a></dd>
-                <dd><a href="../project/getprojects">Incomplete Project</a></dd>
-                <dd><a href="../project/getprojects">Completed Project</a></dd>
+                <dd><a href="../project/getprojects?status=in">Incomplete Project</a></dd>
+                <dd><a href="../project/getprojects?status=complete">Completed Project</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">

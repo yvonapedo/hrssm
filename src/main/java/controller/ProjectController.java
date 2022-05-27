@@ -80,10 +80,10 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/getprojects") //
-    public String getProjects(String search,Model model) {
+    public String getProjects(String search, String status, Model model) {
         TProject project = new TProject();
         project.setProjectTitle(search);
-
+        project.setStatus(status);
         List<TProject> list = projectService.getProjectsSelective(project);
         model.addAttribute("projects", list);
         return "index";

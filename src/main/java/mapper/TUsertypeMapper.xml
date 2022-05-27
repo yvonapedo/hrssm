@@ -70,7 +70,7 @@
   <select id="selectBySelective" parameterType="model.TUsertype" resultType="model.TUsertype">
     select
     <include refid="Base_Column_List"/>
-    from t_salary
+    from t_usertype
     <where>
       <trim prefixOverrides="and">
         <if test="usertypeId!=null and usertypeId!=0">
@@ -85,6 +85,4 @@
       </trim>
     </where>
   </select>
-
-
 </mapper>

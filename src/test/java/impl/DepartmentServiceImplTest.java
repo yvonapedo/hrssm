@@ -34,7 +34,7 @@ public class DepartmentServiceImplTest {
     @Test
     public void getDepartmentsSelective() {
         TDepartment department =new TDepartment();
-department.setDeptId(1);
+        department.setDeptId(1);
         List<TDepartment> list = departmentService.getDepartmentsSelective(department);
         System.out.println(list);
 

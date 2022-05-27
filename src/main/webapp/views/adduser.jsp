@@ -175,8 +175,7 @@
                 <tr>
                     <td><label class="layui-form-label">Department</label></td>
                     <td>
-                        <%--                        <input type="text" class="layui-input" style="width: 300px" name="deptid"--%>
-                        <%--                               value="${loginuser.deptid}">--%>
+
 
                         <select name="deptid" class="layui_input" style="padding: 10px; width: 300px;">
                             <option value="">-- select one --</option>
@@ -200,11 +199,9 @@
             </table>
 
         </div>
-
     </div>
     <div style="background-color: #2d3b91; height: 25px; color: #eeeeee; margin-top: 70px;
-    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a style="color: white;"
-                                                                                        href="../views/login.jsp"> LOGIN
+    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a href="../views/login.jsp" style="color: white;"> LOGIN
         &nbsp;<i class="layui-icon layui-icon-right"></i> </a></div>
 </form>
 <!-- end of edit form -->

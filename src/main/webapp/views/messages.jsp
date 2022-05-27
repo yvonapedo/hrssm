@@ -26,10 +26,7 @@
     <%@include file="sysmenu.jsp" %>
     <!-- end of system menu-->
     <div style="display: flex;">
-
                 <%@include file="sidebar.jsp" %>
-
-
 
         <div class="main_content">
 
@@ -49,10 +46,10 @@
                     <tbody>
                     <c:forEach items="${messages}" var="obj">
                         <tr>
-                            <td width="650"><p class="s3"><b>${obj.subject} </b>&nbsp;|&nbsp;
+                            <td width="650"><a href="../message/viewmessage?messageid=${obj.messageid}"> <p class="s3"><b>${obj.subject} </b>&nbsp;|&nbsp;
                                     ${obj.content} &nbsp;|&nbsp;
                                    <span style="color: #2d3b91"> ${obj.senderName}</span> &nbsp;|&nbsp;
-                                    ${obj.status}</p></td>
+                                    ${obj.status}</p></a></td>
                             <td><p class="s3">${obj.createtime}</p></td>
                             <td>
                                     <%--                            <c:if test="${loginuser.userid==obj.employeeId}">--%>

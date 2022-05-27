@@ -84,10 +84,21 @@ public class MessageController {
 
         return "messages";
     }
+    @RequestMapping(value = "/viewmessage") //
+    public String viewMessage(int messageid, Model model) {
 
+        TMessage message = messageService.selectMessageById(messageid);
+        message.setStatus("read");
+        int ro = messageService.updateMessage(message);
+        model.addAttribute("message", message);
+        return "viewmessage";
+    }
     @RequestMapping(value = "/getmessage") //
     public String getMessage(int messageid, Model model) {
+
         TMessage message = messageService.selectMessageById(messageid);
+        message.setStatus("read");
+        int ro = messageService.updateMessage(message);
         model.addAttribute("message", message);
         return "replymessage";
     }

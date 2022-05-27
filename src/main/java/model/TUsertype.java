@@ -30,4 +30,13 @@ public class TUsertype {
     public void setUsertype(String usertype) {
         this.usertype = usertype == null ? null : usertype.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TUsertype{" +
+                "usertypeId=" + usertypeId +
+                ", usertypeDesc='" + usertypeDesc + '\'' +
+                ", usertype='" + usertype + '\'' +
+                '}';
+    }
 }
