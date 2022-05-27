@@ -63,6 +63,14 @@ public class TUserMapperImpl implements TUserMapper {
     }
 
     @Override
+    public List<TUser> selectBySelectiveOr(TUser record) {
+        session = sqlSessionFactory.openSession();
+        List<TUser> list = session.selectList("dao.TUserMapper.selectBySelectiveOr", record);
+        session.close();
+        return list;
+    }
+
+    @Override
     public int updateByPrimaryKeySelective(TUser record) {
         session = sqlSessionFactory.openSession();
 

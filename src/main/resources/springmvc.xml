@@ -38,5 +38,7 @@
     </bean>
 
     <!--定时器任务-->
-    <mvc:view-controller path="/" view-name="redirect:/project/getprojects" />
+    <mvc:view-controller path="/" view-name="redirect:/user/signup" />
+<!--    <mvc:view-controller path="/" view-name="redirect:/project/getprojects" />-->
+
 </beans>

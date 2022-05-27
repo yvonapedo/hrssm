@@ -19,9 +19,7 @@
         }
 
         table {
-            /*background: #ffffff;*/
             padding: 10px;
-            /*border: #cccccc solid 1px;*/
 
         }
 
@@ -45,7 +43,7 @@
     <div style=" height: 100vh; background-color: #eeeeeeef; padding:30px 30px 0px 30px; width: 500px; border-right: #2d3b91 10px solid;
                 display: flex;">
 
-        <div style="margin-left: 50px; margin-top: 50px;">
+        <div style="margin-left: 50px; margin-top: 150px;">
             <table>
                 <tr>
                     <td colspan="2">
@@ -84,7 +82,7 @@
 
     </div>
     <div style="background-color: #2d3b91; height: 25px; color: #eeeeee; margin-top: 70px;
-    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a style="color: white;" href="../views/adduser.jsp"> REGISTER
+    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a style="color: white;" href="../user/signup"> REGISTER
         &nbsp;<i class="layui-icon layui-icon-right"></i> </a></div>
 </form>
 <!-- end of edit form -->

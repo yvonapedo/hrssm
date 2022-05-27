@@ -64,15 +64,15 @@
                             </div>
                         </div>
 
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">Manager </label>
-                            <div class="layui-input-block">
-                                <input type="text" name="managerId" value="${project.managerId}" required
-                                       lay-verify="required"
-                                        autocomplete="off"
-                                       class="layui-input" style="width: 300px"/>
-                            </div>
-                        </div>
+<%--                        <div class="layui-form-item">--%>
+<%--                            <label class="layui-form-label">Manager </label>--%>
+<%--                            <div class="layui-input-block">--%>
+<%--                                <input type="text" name="managerId" value="${project.managerId}" required--%>
+<%--                                       lay-verify="required"--%>
+<%--                                        autocomplete="off"--%>
+<%--                                       class="layui-input" style="width: 300px"/>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
                         <div class="layui-form-item">
                             <label class="layui-form-label">Employee</label>

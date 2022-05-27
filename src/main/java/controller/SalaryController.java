@@ -2,6 +2,7 @@ package controller;
 
 import impl.SalaryServiceImpl;
 import model.TSalary;
+import model.TUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import service.ProjectService;
 import service.SalaryService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.List;
@@ -72,11 +75,27 @@ public class SalaryController {
     }
 
     @RequestMapping(value = "/getsalaries") //
-    public String getProjects(String search, Model model) {
+    public String getProjects(String search, Model model,  HttpServletRequest req) {
         TSalary salary= new TSalary();
-//        salary.setEmployeeId();
 
-        List<TSalary> list = salaryService.getSalariesSelective(null);
+        salary.setIssueDate(search);
+        HttpSession session = req.getSession();
+        TUser user= (TUser) session.getAttribute("loginuser");
+        System.out.println(user.getUsername());
+        if (user!= null) {
+            salary.setEmployeeId(user.getUserid());
+        }
+        List<TSalary> list = salaryService.getSalariesSelective(salary);
+        model.addAttribute("salaries", list);
+        return "salaries";
+    }
+
+    @RequestMapping(value = "/mysalaries") //
+    public String getSaleries(int userid, Model model,  HttpServletRequest req) {
+        TSalary salary= new TSalary();
+            salary.setEmployeeId(userid);
+
+        List<TSalary> list = salaryService.getSalariesSelective(salary);
         model.addAttribute("salaries", list);
         return "salaries";
     }

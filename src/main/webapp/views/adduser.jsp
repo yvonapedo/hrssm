@@ -64,12 +64,14 @@
         tr {
             height: 60px;
         }
-img{margin-bottom: 20px;
-    margin-top: 80px;
-    -webkit-box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
-    -moz-box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
-    box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
-}
+
+        img {
+            margin-bottom: 20px;
+            margin-top: 80px;
+            -webkit-box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
+            -moz-box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
+            box-shadow: 5px -4px 10px 3px rgba(93, 93, 93, 0.87);
+        }
     </style>
     <!-- end of page css-->
     <meta charset="utf-8">
@@ -82,117 +84,127 @@ img{margin-bottom: 20px;
                 display: flex;">
 
 
-            <div >
-                <section style=" overflow: hidden">
-                    <div style="width:100%">
+        <div>
+            <section style=" overflow: hidden">
+                <div style="width:100%">
 
-                        <c:if test="${content==null}">
-                            <div><img  style="" id="upload" width="300" height="300px"
-                                      src="../../hrm_img/nopicture.jpg"></div>
-                        </c:if>
-                        <c:if test="${content!=null}">
-                            <div><img id="upload" style="margin-bottom: 20px;" width="300" height="300px" src="../../hrm_img/${loginuser.photourl}">
-                            </div>
-                        </c:if>
-                    </div>
+                    <c:if test="${content==null}">
+                        <div><img style="" id="upload" width="300" height="300px"
+                                  src="../../hrm_img/nopicture.jpg"></div>
+                    </c:if>
+                    <c:if test="${content!=null}">
+                        <div><img id="upload" style="margin-bottom: 20px;" width="300" height="300px"
+                                  src="../../hrm_img/${loginuser.photourl}">
+                        </div>
+                    </c:if>
+                </div>
 
-                    <div>
-                        <input id="photourl" class="layui-input" style=" color: #c5bec1;" type="text"
-                               name="photourl" value="${loginuser.photourl}"
-                               readonly="readonly">
-                        <input class="layui-btn layui-btn-normal" type="button" value="Select Picture" id="choicePhoto"
-                               style="width: 100%; margin-bottom: 10px; ">
-                        <!-- Hide file tag -->
-                        <input id="fileToUpload" style="display:none" type="file" name="upfile"/>
-                    </div>
+                <div>
+                    <input id="photourl" class="layui-input" style=" color: #c5bec1;" type="text"
+                           name="photourl" value="${loginuser.photourl}"
+                           readonly="readonly">
+                    <input class="layui-btn layui-btn-normal" type="button" value="Select Picture" id="choicePhoto"
+                           style="width: 100%; margin-bottom: 10px; ">
+                    <!-- Hide file tag -->
+                    <input id="fileToUpload" style="display:none" type="file" name="upfile"/>
+                </div>
 
 
-                </section>
-            </div>
+            </section>
+        </div>
 
-<%--        <div style="width: 2px; background-color: #2D3B91; height: 100%;"></div>--%>
-            <div style="margin-left: 50px;">
-                <table>
-                    <tr>
-                        <td colspan="2">
-                            <h2 style="color: #2D3B91;">Sign up </h2>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td   style="width: 200px;"><label class="layui-form-label">Username</label></td>
-                        <c:if test="${loginuser!=null}">
-                            <td><input type="text" class="layui-input" style="width: 300px" name="userid"
-                                       value="${loginuser.userid}"></td>
-                        </c:if>
-                        <c:if test="${loginuser==null}">
-                            <td><input type="text" class="layui-input" style="width: 300px" name="username"
-                                       value="${loginuser.username}"></td>
-                        </c:if>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Password</label></td>
-                        <td><input type="password" class="layui-input" style="width: 300px" name="password"
-                                   value="${loginuser.password}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Confirm password</label></td>
-                        <td><input type="password" class="layui-input" style="width: 300px" name="password2"
-                                   value="${loginuser.password}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">First name</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="firstname"
-                                   value="${loginuser.firstname}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Last name</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="lastname"
-                                   value="${loginuser.lastname}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Dat of birth</label></td>
-                        <td><input type="date" class="layui-input" style="width: 300px" name="dob"
-                                   value="${loginuser.dob}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Mobile</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="telephone"
-                                   value="${loginuser.telephone}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Email</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="email"
-                                   value="${loginuser.email}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Address</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="address"
-                                   value="${loginuser.address}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Department</label></td>
-                        <td><input type="text" class="layui-input" style="width: 300px" name="deptid"
-                                   value="${loginuser.deptid}"></td>
-                    </tr>
-                    <tr>
-                        <td><label class="layui-form-label">Hire Date</label></td>
-                        <td><input type="date" class="layui-input" style="width: 300px" name="hiredate"
-                                   value="${loginuser.hiredate}"></td>
-                    </tr>
+        <%--        <div style="width: 2px; background-color: #2D3B91; height: 100%;"></div>--%>
+        <div style="margin-left: 50px;">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h2 style="color: #2D3B91;">Sign up </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;"><label class="layui-form-label">Username</label></td>
+                    <c:if test="${loginuser!=null}">
+                        <td><input type="text" class="layui-input" style="width: 300px" name="userid"
+                                   value="${loginuser.userid}"></td>
+                    </c:if>
+                    <c:if test="${loginuser==null}">
+                        <td><input type="text" class="layui-input" style="width: 300px" name="username"
+                                   value="${loginuser.username}"></td>
+                    </c:if>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Password</label></td>
+                    <td><input type="password" class="layui-input" style="width: 300px" name="password"
+                               value="${loginuser.password}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Confirm password</label></td>
+                    <td><input type="password" class="layui-input" style="width: 300px" name="password2"
+                               value="${loginuser.password}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">First name</label></td>
+                    <td><input type="text" class="layui-input" style="width: 300px" name="firstname"
+                               value="${loginuser.firstname}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Last name</label></td>
+                    <td><input type="text" class="layui-input" style="width: 300px" name="lastname"
+                               value="${loginuser.lastname}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Dat of birth</label></td>
+                    <td><input type="date" class="layui-input" style="width: 300px" name="dob"
+                               value="${loginuser.dob}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Mobile</label></td>
+                    <td><input type="text" class="layui-input" style="width: 300px" name="telephone"
+                               value="${loginuser.telephone}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Email</label></td>
+                    <td><input type="text" class="layui-input" style="width: 300px" name="email"
+                               value="${loginuser.email}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Address</label></td>
+                    <td><input type="text" class="layui-input" style="width: 300px" name="address"
+                               value="${loginuser.address}"></td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Department</label></td>
+                    <td>
+                        <%--                        <input type="text" class="layui-input" style="width: 300px" name="deptid"--%>
+                        <%--                               value="${loginuser.deptid}">--%>
 
-                    <tr>
-                        <td colspan="2" style="text-align: center;">
-                            <input type="submit" class="layui-btn layui-btn-normal" name="register" value="Register">
-                            <input type="button" class="layui-btn" name="reset" value="Cancel">
-                        </td>
-                    </tr>
-                </table>
+                        <select name="deptid" class="layui_input" style="padding: 10px; width: 300px;">
+                            <option value="">-- select one --</option>
+                            <c:forEach items="${depts}" var="obj">
+                            <option value="${obj.deptId}">${obj.deptName}</option>
+                            </c:forEach>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="layui-form-label">Hire Date</label></td>
+                    <td><input type="date" class="layui-input" style="width: 300px" name="hiredate"
+                               value="${loginuser.hiredate}"></td>
+                </tr>
 
-            </div>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" class="layui-btn layui-btn-normal" name="register" value="Register">
+                        <input type="button" class="layui-btn" name="reset" value="Cancel">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
 
     </div>
     <div style="background-color: #2d3b91; height: 25px; color: #eeeeee; margin-top: 70px;
-    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a style="color: white;" href="../views/login.jsp"> LOGIN
+    padding: 15px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;"><a style="color: white;"
+                                                                                        href="../views/login.jsp"> LOGIN
         &nbsp;<i class="layui-icon layui-icon-right"></i> </a></div>
 </form>
 <!-- end of edit form -->

@@ -12,10 +12,11 @@
             margin: auto;
             /*width: 1000px;*/
         }
-        .main_content{
+
+        .main_content {
             background-color: #fafafa;
             margin: 50px 0px 0px 100px;
-            padding:50px ;
+            padding: 50px;
         }
     </style>
 </head>
@@ -35,16 +36,17 @@
                     <div class="layui-input-block" style="display: flex">
                         <input type="text" name="search" required lay-verify="required"
                                placeholder="please input title..." autocomplete="off"
-                               class="layui-input"  style="width: 300px"/>
+                               class="layui-input" style="width: 300px"/>
                         <button type="submit" class="layui-btn layui-btn-normal">Search</button>
                     </div>
                 </div>
 
-                <table class="tab_relative  layui-table" border="1"  >
+                <table class="tab_relative  layui-table" border="1">
                     <thead style="" height="30">
-                    <td width="350"><strong>Employee</strong></td>
-                    <td width="150"><strong>Amount</strong></td>
+                    <%--                    <td width="350"><strong>Employee</strong></td>--%>
                     <td width="150"><strong>Issue Date</strong></td>
+                    <td width="150"><strong>Amount</strong></td>
+
                     <td width="150"><strong>Remarks</strong></td>
 
                     <td colspan="2"><strong>Operations</strong></td>
@@ -53,17 +55,19 @@
                     <tbody>
                     <c:forEach items="${salaries}" var="obj">
                         <tr>
-                            <td><p class="s3">${obj.employeeId}</p></td>
-                            <td><p class="s3">${obj.amount}</p></td>
                             <td><p class="s3">${obj.issueDate}</p></td>
+                                <%--                            <td><p class="s3">${obj.employeeId}</p></td>--%>
+                            <td><p class="s3">${obj.amount}</p></td>
+
                             <td><p class="s3">${obj.remarks}</p></td>
                             <td>
-                                    <%--                            <c:if test="${loginuser.userid==obj.employeeId}">--%>
-                                <p>
-                                    <a class="layui-btn" href="../salary/getsalary?salaryId=${obj.salaryId}">edit</a>
-                                    <a class="layui-btn layui-btn-primary" href="#">remove</a>
-                                </p>
-                                    <%--                            </c:if>--%>
+                                <c:if test="${loginuser.usertypeId==2}">
+                                    <p>
+                                        <a class="layui-btn"
+                                           href="../salary/getsalary?salaryId=${obj.salaryId}">edit</a>
+                                        <a class="layui-btn layui-btn-primary" href="#">remove</a>
+                                    </p>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

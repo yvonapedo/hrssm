@@ -65,9 +65,12 @@ public class UserServiceImpl implements UserService {
 
         return tUserMapperImpl.selectByPrimaryKey(userid);
     }
-
     @Override
     public List<TUser> getUsersSelective(TUser record) {
-          return   tUserMapperImpl.selectBySelective(record);
+        return   tUserMapperImpl.selectBySelective(record);
+    }
+    @Override
+    public List<TUser> getUsersSelectiveOr(TUser record) {
+        return   tUserMapperImpl.selectBySelectiveOr(record);
     }
 }

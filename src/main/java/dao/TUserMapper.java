@@ -15,6 +15,8 @@ public interface TUserMapper {
 
     List<TUser> selectBySelective(TUser record);
 
+    List<TUser> selectBySelectiveOr(TUser record);
+
     int updateByPrimaryKeySelective(TUser record);
 
     int updateByPrimaryKey(TUser record);

@@ -7,7 +7,7 @@
 
   <!--配置首页-->
   <welcome-file-list>
-    <welcome-file>project/getprojects</welcome-file>
+    <welcome-file>user/signup</welcome-file>
   </welcome-file-list>
 
   <!--解决中文乱码：CharacterEncodingFilter-->

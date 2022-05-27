@@ -49,7 +49,7 @@ public interface UserService {
      * and null is returned in case of failure
      */
     public TUser getTUserByid(int userid);
-
-
     public List<TUser> getUsersSelective(TUser record);
+
+    public List<TUser> getUsersSelectiveOr(TUser record);
 }

@@ -26,7 +26,10 @@
     <%@include file="sysmenu.jsp" %>
     <!-- end of system menu-->
     <div style="display: flex;">
-        <%@include file="sidebar.jsp" %>
+
+                <%@include file="sidebar.jsp" %>
+
+
 
         <div class="main_content">
 
@@ -48,7 +51,7 @@
                         <tr>
                             <td width="650"><p class="s3"><b>${obj.subject} </b>&nbsp;|&nbsp;
                                     ${obj.content} &nbsp;|&nbsp;
-                                    ${obj.senderid}&nbsp;|&nbsp;
+                                   <span style="color: #2d3b91"> ${obj.senderName}</span> &nbsp;|&nbsp;
                                     ${obj.status}</p></td>
                             <td><p class="s3">${obj.createtime}</p></td>
                             <td>
@@ -56,7 +59,7 @@
                                 <p>
                                     <a class="layui-btn"
                                        href="../message/getmessage?messageid=${obj.messageid}">reply</a>
-                                    <a class="layui-btn layui-btn-primary" href="#">remove</a>
+<%--                                    <a class="layui-btn layui-btn-primary" href="#">remove</a>--%>
                                 </p>
                                     <%--                            </c:if>--%>
                             </td>

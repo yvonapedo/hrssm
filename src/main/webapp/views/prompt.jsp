@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>错误提示</title>
+		<title>Successful</title>
 		<style>
 			.errorcontent{
 				margin-left: 100px;
@@ -25,7 +25,7 @@
 		<table class="errorcontent">
 			<tr>
 				<td rowspan="2" style="width:350px">
-					<img src="img/success.jpg">
+					<img src="../../hrm_img/success.png">
 				</td>
 				<td><center>
 						<p><h2>${promptMsg }</h2></p>

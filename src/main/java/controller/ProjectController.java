@@ -1,12 +1,15 @@
 package controller;
 
 import model.TProject;
+import model.TUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.ProjectService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -18,18 +21,24 @@ public class ProjectController {
     private ProjectService projectService;
 
     @RequestMapping(value = "/addproject") //
-    public String addProject(String projectTitle, String issueDate, String dueDate, int managerId,
-                             int employeeId, String status, String remarks, Model model) throws ParseException {
+    public String addProject(String projectTitle, String issueDate, String dueDate,
+                             int employeeId, String status, String remarks, Model model, HttpServletRequest req) throws ParseException {
 
         TProject project = new TProject();
 
         project.setProjectTitle(projectTitle);
         project.setIssueDate(issueDate);
         project.setDueDate(dueDate);
-        project.setManagerId(managerId);
+
         project.setEmployeeId(employeeId);
         project.setStatus(status);
         project.setRemarks(remarks);
+        HttpSession session = req.getSession();
+        TUser user= (TUser) session.getAttribute("loginuser");
+        System.out.println(user.getUsername());
+        if (user!= null) {
+            project.setManagerId(user.getUserid());
+        }
         int row;
         row = projectService.insertProject(project);
 
@@ -52,7 +61,7 @@ public class ProjectController {
         project.setProjectTitle(projectTitle);
         project.setIssueDate(issueDate);
         project.setDueDate(dueDate);
-        project.setManagerId(managerId);
+
         project.setEmployeeId(employeeId);
         project.setStatus(status);
         project.setRemarks(remarks);

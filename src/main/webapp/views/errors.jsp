@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>错误提示</title>
+		<title>Error</title>
 		<style>
 			.errorcontent{
 				margin-left: 100px;
@@ -15,14 +15,13 @@
 				font-size: 16px;
 				color:#EE7621;
 			}
-			
 		</style>
 	</head>
 	<body>
 		<table class="errorcontent">
 			<tr>
 				<td rowspan="2" style="width:350px">
-					<img src="img/error.jpg">
+					<img style="height: 350px;width: 350px; object-fit: contain; " src="../../hrm_img/error.png">
 				</td>
 				<td><center>
 						<p><h2>${errMsg }</h2></p>
