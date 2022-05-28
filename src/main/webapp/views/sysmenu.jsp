@@ -14,6 +14,13 @@
             text-transform: uppercase;
         }
     </style>
+
+    <script>
+        window.onload = function exampleFunction() {
+            // window.open("../message/getunread")
+            console.log('The Script will load now.');
+        }
+    </script>
 </head>
 <body>
 
@@ -31,15 +38,18 @@
                 </li>
                 <li class="layui-nav-item"><a href="../department/getemployees?deptId=${loginuser.deptid}"><i
                         class="layui-icon layui-icon-group"></i>&nbsp;&nbsp;&nbsp;My Department</a></li>
-                <li class="layui-nav-item"><a href="../message/getmessages"> <i class="layui-icon layui-icon-email"></i>&nbsp;&nbsp;&nbsp;Messages<span
-                        class="layui-badge orange">9</span></a>
+                <li class="layui-nav-item"><a href="../message/getmessages"> <i class="layui-icon layui-icon-email"></i>&nbsp;&nbsp;&nbsp;Messages
+<%--                    <span class="layui-badge orange">${count}</span>--%>
+                </a>
                 </li>
                 <li class="layui-nav-item"><a href="">
                     <%--                    <img src="../../hrm_img/${loginuser.photourl}" tppabs="http://t.n/RCzsdCq" class="layui-nav-img">--%>
                     <i class="layui-icon layui-icon-user"></i>&nbsp;&nbsp;&nbsp;${loginuser.firstname}</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="../views/edituser.jsp"><i class="layui-icon layui-icon-username"></i>&nbsp;&nbsp;My Information</a></dd>
-                        <dd><a href="../views/changepwd.jsp"><i class="layui-icon layui-icon-password"></i>&nbsp;&nbsp;Change Password</a>
+                        <dd><a href="../views/edituser.jsp"><i class="layui-icon layui-icon-username"></i>&nbsp;&nbsp;My
+                            Information</a></dd>
+                        <dd><a href="../views/changepwd.jsp"><i class="layui-icon layui-icon-password"></i>&nbsp;&nbsp;Change
+                            Password</a>
                         </dd>
                         <dd><a href="../user/logout"><i class="layui-icon layui-icon-close"></i>&nbsp;&nbsp;Exit</a>
                         </dd>

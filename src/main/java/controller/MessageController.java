@@ -227,6 +227,23 @@ public class MessageController {
         return "addmessage";
     }
 
+    @RequestMapping(value = "/getunread") //
+    public void getunread( Model model,  HttpServletRequest req) {
+        TMessage message = new TMessage();
+        message.setStatus("sent");
+
+        HttpSession session = req.getSession();
+        TUser user = (TUser) session.getAttribute("loginuser");
+        System.out.println(user.getUsername());
+        if (user != null) {
+            message.setReceiverid(user.getUserid());
+        }
+       List<TMessage> list= messageService.getMessagesSelective(message);
+
+        model.addAttribute("count", list.size());
+//        return "sysmenu";
+    }
+
     @RequestMapping(value = "/getuser") //
     public String getuser(int userid, Model model, Model rmodel) {
 
