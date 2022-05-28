@@ -9,6 +9,11 @@
     <title>HRM</title>
     <link rel="stylesheet" href="../res/layui/css/layui.css">
     <link rel="stylesheet" href="../res/css/main.css">
+    <style>
+        .layui-btn-normal{
+            background-color: #2d3b91;
+        }
+    </style>
 </head>
 <body>
 

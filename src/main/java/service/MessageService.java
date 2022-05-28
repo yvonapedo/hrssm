@@ -13,5 +13,7 @@ public interface MessageService {
 
     public List<TMessage> getMessagesSelective(TMessage record);
 
+    public List<TMessage> getMessagesSelectiveOr(TMessage record);
+
     public int updateMessage(TMessage record);
 }

@@ -12,11 +12,27 @@
 <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo"
     style="margin-right: 10px ; text-align: left; background-color: #001428; height: 100vh; border-radius: 0px; border: #001428 2px solid;">
     <li class="layui-nav-item">
-        <img src="../../hrm_img/${loginuser.photourl}" style="height: 100px; width: 100px; border-radius: 50px; margin: 10px 0px 10px 45px;">
+        <img src="../../hrm_img/${loginuser.photourl}"
+             style="height: 100px; width: 100px; border-radius: 50px; margin: 10px 0px 10px 45px;">
         <%--        <svg  viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">--%>
         <%--        <circle cx="50" cy="50" r="50"  stroke="#001428" stroke-width="35" fill="#2D3B91"/>   </svg>--%>
     </li>
 
+    <c:if test="${loginuser.usertypeId==1}">
+        <li class="layui-nav-item" style="background-color: #009E94">
+            <a href="javascript:;">EMPLOYEE</a>
+        </li>
+    </c:if>
+    <c:if test="${loginuser.usertypeId==2}">
+        <li class="layui-nav-item" style="background-color: #2d3b91">
+            <a href="javascript:;">MANAGER</a>
+        </li>
+    </c:if>
+    <c:if test="${loginuser.usertypeId==3}">
+        <li class="layui-nav-item" style="background-color: #FF5722">
+            <a href="javascript:;">ADMIN</a>
+        </li>
+    </c:if>
     <c:if test="${loginuser.usertypeId==1}">
         <li class="layui-nav-item">
             <a href="javascript:;">${loginuser.firstname}</a>
@@ -34,26 +50,31 @@
                 <dd><a href="../project/getprojects?status=complete">Completed Project</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">Departments</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../views/adddept.jsp">add Department</a></dd>
-                <dd><a href="../department/getdepartments">Department managers</a></dd>
-                <dd><a href="../department/getdepartments">Department members</a></dd>
 
-            </dl>
-        </li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">Salaries</a>
-            <dl class="layui-nav-child">
-                <dd><a href="../views/addsalary.jsp">Add Salary</a></dd>
-                <dd><a href="../salary/getAllsalaries">Employees Salary</a></dd>
-            </dl>
-        </li>
+        <c:if test="${loginuser.usertypeId==3}">
+            <li class="layui-nav-item">
+                <a href="javascript:;">Departments</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="../views/adddept.jsp">add Department</a></dd>
+                    <dd><a href="../department/getdepartments">Department managers</a></dd>
+                    <dd><a href="../department/getdepartments">Department members</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item">
+                <a href="javascript:;">Salaries</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="../views/addsalary.jsp">Add Salary</a></dd>
+                    <dd><a href="../salary/getAllsalaries">Employees Salary</a></dd>
+                </dl>
+            </li>
+        </c:if>
         <li class="layui-nav-item">
             <a href="javascript:;">Users</a>
             <dl class="layui-nav-child">
-                <dd><a href="../views/adduser.jsp">Add User</a></dd>
+                <c:if test="${loginuser.usertypeId==3}">
+                    <dd><a href="../views/adduser.jsp">Add User</a></dd>
+                </c:if>
                 <dd><a href="../user/getusers">User query</a></dd>
             </dl>
         </li>

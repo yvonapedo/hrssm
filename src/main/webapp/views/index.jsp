@@ -64,13 +64,10 @@
                                     <td><p class="s3">${obj.status}</p></td>
                                     <td><p class="s3">${obj.remarks}</p></td>
                                     <td>
-                                        <c:if test="${loginuser.usertypeId!=1}">
                                             <p>
                                                 <a class="layui-btn"
                                                    href="../project/getproject?projectId=${obj.projectId}">edit</a>
-                                                <a class="layui-btn layui-btn-primary" href="#">remove</a>
                                             </p>
-                                        </c:if>
                                     </td>
                                 </tr>
                             </c:if>

@@ -61,7 +61,7 @@
           and deptid = #{deptid}
         </if>
         <if test="username!=null and username!=''">
-          and username like '%${username}%'
+          and username = #{username}
         </if>
         <if test="password!=null and password!=''">
           and password = #{password}
@@ -76,6 +76,7 @@
 
       </trim>
     </where>
+    order by userid 
   </select>
 
   <select id="selectBySelectiveOr" parameterType="model.TUser" resultType="model.TUser">

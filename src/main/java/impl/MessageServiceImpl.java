@@ -34,6 +34,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public List<TMessage> getMessagesSelectiveOr(TMessage record) {
+        return tMessageMapper.selectBySelectiveOr(record);
+    }
+
+    @Override
     public int updateMessage(TMessage record) {
         return tMessageMapper.updateByPrimaryKeySelective(record);
     }

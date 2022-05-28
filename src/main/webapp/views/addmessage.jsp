@@ -30,10 +30,20 @@
 
         <div class="main_content" style="width: 900px">
             <div class="layui-card" style="width: 800px">
-                <div class="layui-card-header"><h3>New Message </h3>  </div>
+                <div class="layui-card-header"><h3>New Message </h3> </div>
                 <div class="layui-card-body">
                     <form class="layui-form" action="../message/addmessage">
                         <input style="display: none" type="number" name="messageId" value="${message.messageid}">
+
+                        <div  class="layui-form-item">
+                            <label class="layui-form-label">Receiver username</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="receiver"  required
+                                       lay-verify="required"
+                                       autocomplete="off" value="${user.username}"
+                                       class="layui-input" style="width: 300px"/>
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">Subject </label>
                             <div class="layui-input-block">
@@ -48,36 +58,11 @@
                             <label class="layui-form-label">Content</label>
                             <div class="layui-input-block">
                                 <textarea name="content" value="${message.content}"
-                                          class="layui-input" style="width: 300px"></textarea>
+                                          class="layui-input" style="width: 300px;height: 300px;   resize: none;"  ></textarea>
 
-<%--                                <input type="text" name="content" value="${message.content}" required--%>
-<%--                                       lay-verify="required"--%>
-<%--                                       autocomplete="off"--%>
-<%--                                       class="layui-input" style="width: 300px"/>--%>
                             </div>
                         </div>
 
-                        <div  class="layui-form-item">
-                            <label class="layui-form-label">senderid</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="senderid" value="${message.senderid}" required
-                                       lay-verify="required"
-                                       autocomplete="off"
-                                       class="layui-input" style="width: 300px"/>
-                            </div>
-                        </div>
-
-
-
-                        <div  class="layui-form-item">
-                            <label class="layui-form-label">receiverid </label>
-                            <div class="layui-input-block">
-                                <input type="text" name="receiverid" value="${message.receiverid}" required
-                                       lay-verify="required"
-                                       autocomplete="off"
-                                       class="layui-input" style="width: 300px"/>
-                            </div>
-                        </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
                                 <button lay-filter="formDemo" type="submit" lay-submit

@@ -50,7 +50,43 @@
 
       </trim>
     </where>
+    order by createtime desc
   </select>
+
+  <select id="selectBySelectiveOr" parameterType="model.TMessage" resultType="model.TMessage">
+    select
+    <include refid="Base_Column_List"/>
+    from t_message
+    <where>
+      <trim prefixOverrides="or">
+        <if test="messageid!=null and messageid!=0">
+          or messageid = #{messageid}
+        </if>
+        <if test="subject!=null and subject!=''">
+          or subject like '%${subject}%'
+        </if>
+        <if test="content!=null and content!=''">
+          or content like '%${content}%'
+        </if>
+        <if test="senderid!=null and  senderid!=0">
+          or senderid = #{senderid}
+        </if>
+        <if test="receiverid!=null and  receiverid!=0">
+          or receiverid = #{receiverid}
+        </if>
+        <if test="createtime!=null and createtime!=''">
+          or createtime like '%${createtime}%'
+        </if>
+        <if test="status!=null and  status!=''">
+          or status like '%${status}%'
+        </if>
+
+      </trim>
+    </where>
+
+    order by createtime desc
+  </select>
+
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_message

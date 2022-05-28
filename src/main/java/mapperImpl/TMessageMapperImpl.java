@@ -61,6 +61,13 @@ public class TMessageMapperImpl implements TMessageMapper {
         session.close();
         return list;
     }
+    @Override
+    public List<TMessage> selectBySelectiveOr(TMessage record) {
+        session = sqlSessionFactory.openSession();
+        List<TMessage> list = session.selectList("dao.TMessageMapper.selectBySelectiveOr", record);
+        session.close();
+        return list;
+    }
 
     @Override
     public int updateByPrimaryKeySelective(TMessage record) {

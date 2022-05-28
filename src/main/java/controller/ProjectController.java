@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.ProjectService;
+import service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,20 +20,25 @@ import java.util.List;
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
-
+    @Autowired
+    private UserService userService;
     @RequestMapping(value = "/addproject") //
     public String addProject(String projectTitle, String issueDate, String dueDate,
-                             int employeeId, String status, String remarks, Model model, HttpServletRequest req) throws ParseException {
+                             String username, String status, String remarks, Model model, HttpServletRequest req) throws ParseException {
 
         TProject project = new TProject();
 
         project.setProjectTitle(projectTitle);
         project.setIssueDate(issueDate);
         project.setDueDate(dueDate);
-
-        project.setEmployeeId(employeeId);
         project.setStatus(status);
         project.setRemarks(remarks);
+
+        TUser rec = new TUser();
+        rec.setUsername(username);
+        List<TUser> employee = userService.getUsersSelective(rec);
+        project.setEmployeeId(employee.get(0).getUserid());
+
         HttpSession session = req.getSession();
         TUser user= (TUser) session.getAttribute("loginuser");
         System.out.println(user.getUsername());
@@ -54,21 +60,23 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/editproject") //
-    public String editProject(int projectId, String projectTitle, String issueDate, String dueDate, int managerId,
-                              int employeeId, String status, String remarks, Model model) throws ParseException {
+    public String editProject(int projectId, String projectTitle, String issueDate, String dueDate,
+                              String username, String status, String remarks, Model model) throws ParseException {
 
         TProject project = new TProject();
         project.setProjectTitle(projectTitle);
         project.setIssueDate(issueDate);
         project.setDueDate(dueDate);
-
-        project.setEmployeeId(employeeId);
         project.setStatus(status);
         project.setRemarks(remarks);
         project.setProjectId(projectId);
 
-        int row = projectService.updateProject(project);
+        TUser rec = new TUser();
+        rec.setUsername(username);
+        List<TUser> employee = userService.getUsersSelective(rec);
+        project.setEmployeeId(employee.get(0).getUserid());
 
+        int row = projectService.updateProject(project);
         if (row > 0) {
             return "redirect:../project/getprojects";
         } else {
@@ -76,7 +84,6 @@ public class ProjectController {
             model.addAttribute("backUrl", "../views/login.jsp");
             return "errors";
         }
-
     }
 
     @RequestMapping(value = "/getprojects") //
@@ -90,12 +97,16 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/getproject") //
-    public String getProject(int projectId, Model model) {
+    public String getProject(int projectId, Model model, Model empModel) {
+
         TProject project = projectService.selectProjectById(projectId);
+
+        TUser rec = new TUser();
+        rec.setUserid(project.getEmployeeId());
+        List<TUser> list = userService.getUsersSelective(rec);
+        empModel.addAttribute("user", list.get(0));
+
         model.addAttribute("project", project);
         return "editproject";
     }
-
-
-
 }

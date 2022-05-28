@@ -15,6 +15,8 @@ public interface TMessageMapper {
 
     List<TMessage> selectBySelective(TMessage record);
 
+    List<TMessage> selectBySelectiveOr(TMessage record);
+
     int updateByPrimaryKeySelective(TMessage record);
 
     int updateByPrimaryKey(TMessage record);

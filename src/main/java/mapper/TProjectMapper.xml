@@ -47,14 +47,14 @@
           and employeeId = #{employeeId}
         </if>
         <if test="status!=null and status!=''">
-          and status like '%${status}%'
+          and status like '${status}%'
         </if>
         <if test="remarks!=null and remarks!=''">
           and remarks like '%${remarks}%'
         </if>
       </trim>
-
     </where>
+    order by projectId desc
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

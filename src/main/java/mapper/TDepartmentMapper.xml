@@ -33,6 +33,7 @@
         </if>
       </trim>
     </where>
+    order by deptName
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
