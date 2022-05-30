@@ -17,6 +17,8 @@ public class TUser {
 
     private String hiredate;
 
+    private String gender;
+
     private Integer deptid;
 
     private String username;
@@ -89,6 +91,14 @@ public class TUser {
 
     public void setHiredate(String hiredate) {
         this.hiredate = hiredate == null ? null : hiredate.trim();
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Integer getDeptid() {

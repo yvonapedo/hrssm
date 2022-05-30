@@ -12,6 +12,7 @@
             margin: auto;
             /*width: 1000px;*/
         }
+
         table {
             /*background: #ffffff;*/
             padding: 10px;
@@ -22,6 +23,7 @@
         tr {
             height: 60px;
         }
+
         .main_content {
             background-color: #fafafa;
             margin: 50px 0px 0px 100px;
@@ -98,9 +100,22 @@
                             </tr>
 
                             <tr>
+                                <td><label class="layui-form-label">Gender</label></td>
+                                <td>
+                                    <%--                                    <input type="text" class="layui-input" style="width: 300px" name="address"--%>
+                                    <%--                                           value="${loginuser.address}">--%>
+                                    <div>
+                                        <input type="radio" name="gender" value="male" title="Male">
+                                        <input type="radio" name="gender" value="female" title="Female">
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
                                 <td><label class="layui-form-label">Hire Date</label></td>
                                 <td><input type="date" class="layui-input" style="width: 300px" name="hiredate"
-                                           value="${loginuser.hiredate}" ></td>
+                                           value="${loginuser.hiredate}"></td>
                             </tr>
 
                         </table>
@@ -119,4 +134,11 @@
 
 </center>
 </body>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+    });
+</script>
 </html>

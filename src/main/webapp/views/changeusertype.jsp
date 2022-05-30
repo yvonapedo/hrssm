@@ -42,13 +42,15 @@
             <div class="layui-card" style="width: 800px">
                 <div class="layui-card-header"><h3>My information </h3></div>
                 <div class="layui-card-body">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">Gender </label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="sex" title="Male" value="male"/>
-                            <input type="radio" name="sex" title="Female" value="female" checked/>
-                        </div>
-                    </div>
+
+
+                    <%--                    <div class="layui-form-item">--%>
+                    <%--                        <label class="layui-form-label">Gender </label>--%>
+                    <%--                        <div class="layui-input-block">--%>
+                    <%--                            <input type="radio" name="sex" title="Male" value="male"/>--%>
+                    <%--                            <input type="radio" name="sex" title="Female" value="female" checked/>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                     <table>
                         <tr>
                             <td colspan="2">
@@ -88,17 +90,17 @@
                         </tr>
                         <tr>
                             <td><label class="layui-form-label">User Type</label></td>
-                            <td><input type="text" class="layui-input" style="width: 300px" name="usertypeId"
-                                       value="${user.usertypeId}">
+                            <td>
+                                <%--                                <input type="text" class="layui-input" style="width: 300px" name="usertypeId"--%>
+                                <%--                                       value="${user.usertypeId}">--%>
 
-                                <%--                                <select id="usertypeId" name="usertypeId" class="layui-select"--%>
-                                <%--                                        style="padding: 10px; width: 300px; border: red 2px solid;">--%>
-                                <%--                                <option value="">-- select one --</option>--%>
-                                <%--                                <c:forEach items="${usertypes}" var="obj">--%>
-                                <%--                                    <option value="${obj.usertypeId}">${obj.usertype}</option>--%>
-                                <%--                                </c:forEach>--%>
-                                <%--                            </select>--%>
-
+                                <select name="usertypeId" class="layui-select"
+                                        style="padding: 10px; width: 300px; ">
+                                    <option value="">-- select one --</option>
+                                    <c:forEach items="${usertypes}" var="obj">
+                                        <option value="${obj.usertypeId}">${obj.usertype}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                     </table>
@@ -112,14 +114,16 @@
                     </div>
                 </div>
             </div>
-
-            <div>
-                <input type="radio" name="sex" value="nan" title="male">
-                <input type="radio" name="sex" value="nv" title="female" checked>
-                <input type="radio" name="sex" value="" title="neutral" disabled>
-            </div>
         </form>
     </div>
 </div>
 </body>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+
+    });
+</script>
 </html>

@@ -10,6 +10,7 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="hiredate" property="hiredate" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
     <result column="deptid" property="deptid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -17,7 +18,7 @@
     <result column="photourl" property="photourl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userid, firstname, lastname, dob, telephone, email, address, hiredate, deptid, username, 
+    userid, firstname, lastname, dob, telephone, email, address, hiredate, gender, deptid, username,
     password, usertypeId, photourl
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -56,6 +57,10 @@
         </if>
         <if test="hiredate!=null and hiredate!=''">
           and hiredate like '%${hiredate}%'
+        </if>
+
+        <if test="gender!=null and gender!=''">
+          and gender like '%${gender}%'
         </if>
         <if test="deptid!=null and deptid!=''">
           and deptid = #{deptid}
@@ -137,12 +142,12 @@
   <insert id="insert" parameterType="model.TUser" >
     insert into t_user (userid, firstname, lastname, 
       dob, telephone, email, 
-      address, hiredate, deptid, 
+      address, hiredate, gender, deptid,
       username, password, usertypeId, 
       photourl)
     values (#{userid,jdbcType=INTEGER}, #{firstname,jdbcType=VARCHAR}, #{lastname,jdbcType=VARCHAR}, 
       #{dob,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{hiredate,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{hiredate,jdbcType=VARCHAR},#{gender,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER},
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{usertypeId,jdbcType=INTEGER}, 
       #{photourl,jdbcType=VARCHAR})
   </insert>
@@ -172,6 +177,9 @@
       </if>
       <if test="hiredate != null" >
         hiredate,
+      </if>
+      <if test="gender != null" >
+        gender,
       </if>
       <if test="deptid != null" >
         deptid,
@@ -214,6 +222,9 @@
       <if test="hiredate != null" >
         #{hiredate,jdbcType=VARCHAR},
       </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
       <if test="deptid != null" >
         #{deptid,jdbcType=INTEGER},
       </if>
@@ -255,6 +266,9 @@
       <if test="hiredate != null" >
         hiredate = #{hiredate,jdbcType=VARCHAR},
       </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
       <if test="deptid != null" >
         deptid = #{deptid,jdbcType=INTEGER},
       </if>
@@ -281,7 +295,8 @@
       telephone = #{telephone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      hiredate = #{hiredate,jdbcType=VARCHAR},
+        hiredate = #{hiredate,jdbcType=VARCHAR},
+        gender = #{gender,jdbcType=VARCHAR},
       deptid = #{deptid,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
