@@ -27,13 +27,13 @@ public class UserController {
 
     @RequestMapping(value = "/register") //: /user/register
     public String registerUser(String username, String firstname, String lastname, String dob, String telephone,
-                               String email, String address, String hiredate, int deptid, String photourl,
+                               String email, String gender, String address, String hiredate, int deptid, String photourl,
                                String password, Model model) {
         TUser user = new TUser();
 
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        user.setDob(dob);
+        user.setDob(dob);user.setGender(gender);
         user.setTelephone(telephone);
         user.setEmail(email);
         user.setAddress(address);
@@ -58,7 +58,7 @@ public class UserController {
 
     @RequestMapping(value = "/edituser") //: /user/
     public String edituser(String username, String firstname, String lastname, String dob, String telephone,
-                           String email, String address, String hiredate, String photourl, HttpServletRequest req,
+                           String email, String gender, String address, String hiredate, String photourl, HttpServletRequest req,
                            Model model) {
         TUser user = new TUser();
 
@@ -68,6 +68,7 @@ public class UserController {
         user.setTelephone(telephone);
         user.setEmail(email);
         user.setAddress(address);
+        user.setGender(gender);
         user.setHiredate(hiredate);
         user.setUsername(username);
         user.setPhotourl(photourl);

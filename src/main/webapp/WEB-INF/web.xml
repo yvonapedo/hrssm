@@ -10,6 +10,8 @@
     <welcome-file>user/signup</welcome-file>
   </welcome-file-list>
 
+
+
   <!--解决中文乱码：CharacterEncodingFilter-->
   <!--通过过滤使每个字符串均使用UTF-8进行编码，解决中文不识别问题-->
   <filter>

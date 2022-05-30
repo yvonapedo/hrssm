@@ -85,10 +85,10 @@
         <div>
             <section style=" overflow: hidden">
                 <div style="width:100%">
-
                     <c:if test="${content==null}">
                         <div><img style="" id="upload" width="300" height="300px"
-                                  src="../../hrm_img/nopicture.jpg"></div>
+                                  src="../../hrm_img/nopicture.jpg">
+                        </div>
                     </c:if>
                     <c:if test="${content!=null}">
                         <div><img id="upload" style="margin-bottom: 20px;" width="300" height="300px"
@@ -106,12 +106,9 @@
                     <!-- Hide file tag -->
                     <input id="fileToUpload" style="display:none" type="file" name="upfile"/>
                 </div>
-
-
             </section>
         </div>
 
-        <%--        <div style="width: 2px; background-color: #2D3B91; height: 100%;"></div>--%>
         <div style="margin-left: 50px;">
             <table>
                 <tr>
@@ -122,8 +119,8 @@
                 <tr>
                     <td style="width: 200px;"><label class="layui-form-label">Username</label></td>
                     <c:if test="${loginuser!=null}">
-                        <td><input type="text" class="layui-input" style="width: 300px" name="userid"
-                                   value="${loginuser.userid}"></td>
+                        <td><input type="text" class="layui-input" style="width: 300px" name="username"
+                                   value="${loginuser.username}"></td>
                     </c:if>
                     <c:if test="${loginuser==null}">
                         <td><input type="text" class="layui-input" style="width: 300px" name="username"
@@ -173,9 +170,7 @@
                 <tr>
                     <td><label class="layui-form-label">Department</label></td>
                     <td>
-
-
-                        <select name="deptid" class="layui_input" style="padding: 10px; width: 300px;">
+                        <select name="deptid" class="layui-select" style="padding: 10px; width: 300px; border: none">
                             <option value="">-- select one --</option>
                             <c:forEach items="${depts}" var="obj">
                             <option value="${obj.deptId}">${obj.deptName}</option>
@@ -204,4 +199,12 @@
 </form>
 <!-- end of edit form -->
 </body>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+
+    });
+</script>
 </html>

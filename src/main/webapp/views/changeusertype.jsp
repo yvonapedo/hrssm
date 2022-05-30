@@ -91,8 +91,6 @@
                         <tr>
                             <td><label class="layui-form-label">User Type</label></td>
                             <td>
-                                <%--                                <input type="text" class="layui-input" style="width: 300px" name="usertypeId"--%>
-                                <%--                                       value="${user.usertypeId}">--%>
 
                                 <select name="usertypeId" class="layui-select"
                                         style="padding: 10px; width: 300px; ">
