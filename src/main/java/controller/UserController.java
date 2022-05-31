@@ -42,6 +42,7 @@ public class UserController {
         user.setUsername(username);
         user.setPassword(password);
         user.setUsertypeId(1);
+        user.setGender("male");
         user.setPhotourl(photourl);
 
         boolean row;

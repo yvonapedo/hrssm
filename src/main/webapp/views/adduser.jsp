@@ -58,7 +58,6 @@
             /*background: #ffffff;*/
             padding: 10px;
             /*border: #cccccc solid 1px;*/
-
         }
 
         tr {
@@ -91,7 +90,7 @@
                         </div>
                     </c:if>
                     <c:if test="${content!=null}">
-                        <div><img id="upload" style="margin-bottom: 20px;" width="300" height="300px"
+                        <div><img id="upload" style="margin-bottom: 20px;" width="270" height="300px"
                                   src="../../hrm_img/${loginuser.photourl}">
                         </div>
                     </c:if>
