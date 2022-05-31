@@ -42,7 +42,7 @@
             max-height: 100%;
             overflow: auto;
             background-color: white;
-            opacity: 0.5%;
+            opacity: 95%;
             padding: 2rem;
             color: black;
             transform: translateY(101%);
@@ -107,7 +107,8 @@
         <%@include file="sidebar.jsp" %>
 
         <div class="main_content">
-
+            <h1 style="font-weight: bolder">My Team</h1>
+            <hr>
             <form class="layui-form" action="../user/getusers">
                 <div class="layui-form-item">
                     <label class="layui-form-label">Search box</label>
@@ -136,6 +137,7 @@
                                 <p class="s3">${obj.email}</p>
                                 <p class="s3">${obj.address}</p>
                                 <p class="s3">${obj.hiredate}</p>
+                                <a class="layui-btn" href="../user/getuser?userid=${obj.userid}">edit</a>
                             </div>
                         </div>
                     </c:forEach>

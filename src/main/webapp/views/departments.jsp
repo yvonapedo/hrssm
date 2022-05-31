@@ -28,7 +28,8 @@
         <%@include file="sidebar.jsp" %>
 
         <div class="main_content">
-
+            <h1 style="font-weight: bolder">Departments </h1>
+            <hr>
             <form class="layui-form" action="">
                 <div class="layui-form-item">
                     <label class="layui-form-label">Search box</label>

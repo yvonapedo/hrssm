@@ -85,12 +85,12 @@
             <section style=" overflow: hidden">
                 <div style="width:100%">
                     <c:if test="${content==null}">
-                        <div><img style="" id="upload" width="300" height="300px"
+                        <div><img style="" id="upload" width="270px" height="300px"
                                   src="../../hrm_img/nopicture.jpg">
                         </div>
                     </c:if>
                     <c:if test="${content!=null}">
-                        <div><img id="upload" style="margin-bottom: 20px;" width="270" height="300px"
+                        <div><img id="upload" style="margin-bottom: 20px;" width="270px" height="300px"
                                   src="../../hrm_img/${loginuser.photourl}">
                         </div>
                     </c:if>
